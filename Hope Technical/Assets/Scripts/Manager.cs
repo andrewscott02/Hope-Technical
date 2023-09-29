@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     public AudioClip correctSound, incorrectSound;
 
     public GameObject endGameObject;
+    public GameObject gameElements;
 
     ARObjectManager arManager;
     AudioSource audioSource;
@@ -53,7 +54,7 @@ public class Manager : MonoBehaviour
 
     public void SetupGame()
     {
-        choiceContainer.SetActive(true);
+        gameElements.SetActive(true);
         endGameObject.SetActive(false);
 
         allChoices = new List<int>();
@@ -132,7 +133,7 @@ public class Manager : MonoBehaviour
 
     void GameWon()
     {
-        choiceContainer.SetActive(false);
+        gameElements.SetActive(false);
         endGameObject.SetActive(true);
     }
 }
