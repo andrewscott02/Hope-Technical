@@ -11,6 +11,13 @@ public class ARObjectManager : MonoBehaviour
     public GameObject numberObject;
     public TextMeshProUGUI text;
 
+    Canvas numberCanvas;
+
+    private void Awake()
+    {
+        numberCanvas = numberObject.GetComponentInChildren<Canvas>();
+    }
+
     public void SetNumber(int number)
     {
         text.text = number.ToString();
@@ -28,6 +35,9 @@ public class ARObjectManager : MonoBehaviour
         if (arRaycast.Raycast(spawnVector, hit, TrackableType.PlaneWithinPolygon))
         {
             numberObject.transform.position = hit[0].pose.position;
+            numberCanvas.renderMode = RenderMode.WorldSpace;
         }
+        else
+            numberCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
     }
 }
